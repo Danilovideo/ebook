@@ -1,0 +1,91 @@
+from fpdf import FPDF
+from fpdf import FPDF
+
+# Criando o objeto FPDF
+pdf = FPDF()
+pdf.set_auto_page_break(auto=True, margin=15)
+
+# Adicionando a capa
+pdf.add_page()
+pdf.set_font("Arial", size=16, style='B')
+pdf.cell(200, 10, "21 Dias de Transformação", ln=True, align="C")
+pdf.ln(10)
+pdf.set_font("Arial", size=12)
+pdf.cell(200, 10, "Como Criar Hábitos Poderosos e Sustentáveis", ln=True, align="C")
+pdf.ln(10)
+pdf.set_font("Arial", size=12, style='I')
+pdf.cell(200, 10, "Autor: Danilo Magalhães", ln=True, align="C")
+pdf.ln(10)
+
+# Adicionando a imagem de capa
+pdf.image("/mnt/data/A_motivational_book_cover_design_with_a_bright_and.png", x=30, y=50, w=150)
+
+# Adicionando o Sumário
+pdf.add_page()
+pdf.set_font("Arial", size=12, style='B')
+pdf.cell(200, 10, "Sumário", ln=True)
+pdf.ln(10)
+
+# Definindo os itens do sumário
+sumario = [
+    "Dia 1: A Jornada Começa – O Poder dos Hábitos",
+    "Dia 2: Como Identificar o Que Está Te Segurando",
+    "Dia 3: Defina Suas Metas Claras",
+    "Dia 4: A Regra dos 21 Dias – Verdade ou Mito?",
+    "Dia 5: Começando Pequeno – O Poder do Micro-Hábito",
+    "Dia 6: O Ambiente Faz Toda a Diferença",
+    "Dia 7: Celebrando a Primeira Semana – Reflexão e Reconhecimento",
+    "Dia 8: Consistência – O Caminho Para o Sucesso",
+    "Dia 9: Superando Desafios e Obstáculos",
+    "Dia 10: Mantendo a Motivação em Alta",
+    "Dia 11: Criando Rotinas Positivas",
+    "Dia 12: Focando na Recompensa",
+    "Dia 13: Ajustando o Rumo – Quando Precisar Modificar a Estratégia",
+    "Dia 14: Celebrando Metas de 2 Semanas",
+    "Dia 15: O Que Está Impedindo o Seu Crescimento?",
+    "Dia 16: Aumentando a Dificuldade Gradualmente",
+    "Dia 17: Ajustando as Expectativas",
+    "Dia 18: Fortalecendo a Persistência",
+    "Dia 19: O Poder da Repetição",
+    "Dia 20: Comprometa-se com a Mudança a Longo Prazo",
+    "Dia 21: Conquista e Preparação para o Futuro",
+]
+
+# Adicionando os itens do sumário ao PDF
+pdf.set_font("Arial", size=12)
+for item in sumario:
+    pdf.multi_cell(0, 10, item)
+    pdf.ln(2)
+
+# Função para adicionar o número da página
+def add_page_number(pdf):
+    pdf.set_font("Arial", size=10)
+    pdf.set_y(-15)
+    pdf.cell(0, 10, f'Página {pdf.page_no()}', 0, 0, 'C')
+
+# Adicionando o conteúdo do dia 1 a 21 com imagens
+dias = [
+    ("Dia 1: A Jornada Começa – O Poder dos Hábitos", "Hoje, você começa a descobrir como os hábitos moldam nossa vida. Todos os dias, tomamos decisões, e essas decisões se transformam em hábitos. Hoje, escreva três hábitos que você acredita serem os mais poderosos na sua vida. Como eles impactam sua jornada até agora? O primeiro passo é reconhecer que você já tem hábitos, bons ou ruins, e que é possível mudá-los para alcançar suas metas. O que você quer mudar? Comece com um hábito pequeno."),
+    ("Dia 2: Como Identificar o Que Está Te Segurando", "Hoje, vamos refletir sobre os hábitos negativos que você tem. Quais hábitos estão te segurando? Faça uma lista e se pergunte: o que posso mudar agora? Hoje é o dia de ser honesto consigo mesmo e reconhecer onde as mudanças precisam acontecer. Lembre-se: é possível transformar a negatividade em combustível para o sucesso."),
+    ("Dia 3: Defina Suas Metas Claras", "Agora que você sabe o que precisa mudar, é hora de definir suas metas. O que você quer alcançar? Aplique a metodologia SMART: metas Específicas, Mensuráveis, Atingíveis, Relevantes e com Prazo. Escreva sua primeira meta relacionada ao hábito que deseja formar e esteja pronto para começar a trabalhar nela."),
+    ("Dia 4: A Regra dos 21 Dias – Verdade ou Mito?", "Será que realmente leva 21 dias para criar um novo hábito? A ciência sugere que pode levar entre 18 e 254 dias, mas 21 é um bom começo. O objetivo aqui é não apenas seguir o número, mas se dedicar consistentemente. Hoje, estabeleça seu compromisso: você está pronto para dar esse passo diário?"),
+    ("Dia 5: Começando Pequeno – O Poder do Micro-Hábito", "Pequenos passos podem gerar grandes resultados. Escolha um micro-hábito que você pode executar em poucos minutos todos os dias. Por exemplo, ao invés de se comprometer a uma hora de exercício, comece com 5 minutos por dia. A ideia é criar um ciclo de ação e recompensa, que fortaleça sua confiança."),
+    ("Dia 6: O Ambiente Faz Toda a Diferença", "Hoje, vamos falar sobre o poder do ambiente. Onde você passa seu tempo influencia diretamente seus hábitos. Organize seu espaço para apoiar as novas práticas. Se você quer ler mais, deixe livros ao alcance das mãos. Se deseja comer mais saudável, tenha alimentos saudáveis visíveis e ao alcance. O ambiente deve ser um aliado!"),
+    ("Dia 7: Celebrando a Primeira Semana – Reflexão e Reconhecimento", "Parabéns! Você chegou à primeira semana. Agora, pare um momento para refletir sobre seu progresso. Quais desafios você enfrentou? O que foi mais fácil do que esperava? Reconheça suas pequenas vitórias, elas são os primeiros degraus para o sucesso. O que você aprendeu até agora?"),
+]
+
+# Adicionando os dias ao PDF
+for titulo, texto in dias:
+    pdf.add_page()
+    pdf.set_font("Arial", size=14, style='B')
+    pdf.cell(200, 10, titulo, ln=True)
+    pdf.ln(10)
+    pdf.set_font("Arial", size=12)
+    pdf.multi_cell(0, 10, texto)
+    add_page_number(pdf)
+
+# Salvando o arquivo PDF
+output_path = "/mnt/data/21_dias_transformacao_com_sumario_e_imagens.pdf"
+pdf.output(output_path)
+
+output_path
